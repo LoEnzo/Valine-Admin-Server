@@ -147,11 +147,10 @@ exports.notice = (comment) => {
     if (process.env.QQ != null) {
       qq = "&qq=" + process.env.QQ;
     }
-    const scContent = `[CQ:face,id=119]您的 ${
+    const scContent = `您的 ${
       process.env.SITE_NAME
-    } 上有新评论了！
-[CQ:face,id=183]${name} 发表评论：
-[CQ:face,id=77][CQ:face,id=77][CQ:face,id=77][CQ:face,id=77][CQ:face,id=77]
+    } 上有网友留下了评论：
+网友：${name} 留言：
 ${$(
   text
     .replace(/  <img.*?src="(.*?)".*?>/g, "\n[图片]$1\n")
@@ -160,8 +159,7 @@ ${$(
   .text()
   .replace(/\n+/g, "\n")
   .replace(/\n+$/g, "")}
-[CQ:face,id=76][CQ:face,id=76][CQ:face,id=76][CQ:face,id=76][CQ:face,id=76]
-[CQ:face,id=169]${url + "#" + comment.get("objectId")}`;
+立即回复，请点击链接${url}`;
     axios
       .get(
         `https://qmsg.zendee.cn:443/send/${
